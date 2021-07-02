@@ -1,12 +1,14 @@
 package com.company;
 
 import com.company.accounting.Accounting;
+import com.company.enums.Color;
 import com.company.enums.EmployeeType;
 import com.company.enums.PageSize;
 import com.company.enums.PaperType;
+import com.company.machines.Machine;
 import com.company.printinghouse.Edition;
-import com.company.accounting.Order;
 import com.company.printinghouse.Employee;
+import com.company.printinghouse.PrintingHouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +50,15 @@ public class Main {
         Accounting accounting = new Accounting(editions, employees);
 
         accounting.CalculateExpenses();
+
+        List<Machine> machineList = new ArrayList<>();
+
+        machineList.add( new Machine(Color.BLACKANDWHITE, 5000, 600));
+        machineList.add( new Machine(Color.COLORED, 6000, 700));
+        machineList.add( new Machine(Color.BLACKANDWHITE, 7000, 800));
+
+        PrintingHouse ph = new PrintingHouse(employees, machineList);
+
+        ph.startPrinting(ed);
     }
 }

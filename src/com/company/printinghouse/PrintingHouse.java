@@ -1,21 +1,20 @@
 package com.company.printinghouse;
 
+import com.company.machines.Machine;
+
 import java.util.List;
 
 public class PrintingHouse {
     private List<Employee> employees;
-    private List<Edition> editions;
+    private List<Machine> machines;
 
-    public PrintingHouse(List<Employee> employees, List<Edition> editions) {
+    public PrintingHouse(List<Employee> employees, List<Machine> machines) {
         this.employees = employees;
-        this.editions = editions;
+        this.machines = machines;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public List<Edition> getEditions() {
-        return editions;
+    public void startPrinting(Edition ed){
+        this.machines
+                .forEach(machine -> new Thread(() -> machine.print(ed)).start());
     }
 }
