@@ -16,12 +16,19 @@ public class Edition {
         this.pageCount = pageCount;
     }
 
-    public double price(){
-        double price = this.pageCount * this.pageSize.getFormatValue() * this.paperType.getFormatValue();
-        return price;
+    public String getTitle() {
+        return title;
     }
 
-    public double sellingPrice() {
-        return price() * 1.7;
+    public PageSize getPageSize() {
+        return pageSize;
+    }
+
+    public PaperType getPaperType() {
+        return paperType;
+    }
+
+    public int getPageCount() {
+        return pageCount;
     }
 }
