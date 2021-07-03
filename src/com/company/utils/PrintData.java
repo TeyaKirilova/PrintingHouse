@@ -1,0 +1,35 @@
+package com.company.utils;
+
+import com.company.accounting.Accounting;
+import com.company.printinghouse.Edition;
+import com.company.printinghouse.Employee;
+
+import java.util.List;
+
+public class PrintData extends Accounting{
+
+
+    public PrintData(List<Edition> editions, List<Employee> employees) {
+        super(editions, employees);
+    }
+
+    public void printData() {
+        var managers =
+                String.format("The company has %d managers %n", managerCount());
+
+        var expensePrint =
+                String.format("Total expenses for money and books are: %.2f%n", calculateExpenses());
+
+        var profitPrint =
+                String.format("The profit for the company is: %.2f%n", getProfit());
+
+        var managerProfit =
+                String.format("Each manager should receive: %.2f%n", getRemainingMoney());
+
+        System.out.println(managers);
+        System.out.println(expensePrint);
+        System.out.println(profitPrint);
+        System.out.println(managerProfit);
+
+    }
+}

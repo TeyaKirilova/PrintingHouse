@@ -56,13 +56,13 @@ public class Accounting {
         return profit;
     }
 
-    public void getRemainingMoney() {
+    public double getRemainingMoney() {
         double sum = getProfit() - calculateExpenses(); //helper var to get the diff between the income and outcome
 
         if ( sum > 0) { // if we have diff, greater than 0, we divide it between the managers
             var managerBonusDivide = sum / managerCount();
-            var printManagerBonus = String.format("Managers should receive %.2f each", managerBonusDivide);
-            System.out.println(printManagerBonus);
+            return managerBonusDivide;
         }
+        return 0;
     }
 }

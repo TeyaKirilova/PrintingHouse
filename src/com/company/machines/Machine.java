@@ -3,6 +3,7 @@ package com.company.machines;
 import com.company.enums.Color;
 import com.company.printinghouse.Edition;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Machine {
@@ -44,18 +45,22 @@ public class Machine {
                 '}';
     }
 
-    public void print(Edition ed) {
-        int production = ed.getCount() * ed.getPageCount(); //multiply page count by requested editions count
+    public void print(List<Edition> ed) {
+        int production = 0;
+        for (var e : ed) {
+            var tmp = e.getCount() * e.getPageCount();
+            production += tmp;
+        }
         var delay = (long) ((double) 60 / (double) this.pagesPerMinute * 1000);
         //set printing delay
         for (int i = 0; i < production; i++) {
             //catch exception if printing is interrupted
             try {
                 Thread.sleep(delay);
-                var str = String.format("Machine %s printed %s in %s color", this.uuid.toString(), ed.getTitle(), getColor());
+                var str = String.format("Machine %s printed in %s color", this.uuid.toString(), getColor());
                 System.out.println(str);
             } catch (InterruptedException e) {
-                var s = String.format("Machine %s was interrupted from printing", this.uuid.toString());
+                var s = String.format("Machine %s broke down!", this.uuid.toString());
                 System.out.println(s);
             }
         }
