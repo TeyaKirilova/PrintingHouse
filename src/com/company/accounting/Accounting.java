@@ -5,21 +5,13 @@ import com.company.printinghouse.Employee;
 import java.util.List;
 
 public class Accounting {
-    private List<Edition> editions;
-    private List<Employee> employees;
+    private final List<Edition> editions;
+    private final List<Employee> employees;
 
     public Accounting(List<Edition> editions, List<Employee> employees) {
 
         this.editions = editions;
         this.employees = employees;
-    }
-
-    public List<Edition> getEdition() {
-        return editions;
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
     }
 
     public int managerCount() {

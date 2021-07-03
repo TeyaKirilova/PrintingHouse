@@ -55,7 +55,8 @@ public class Main {
 
         System.out.println("------------------------");
         System.out.println(accounting.getProfit());
+        accounting.getRemainingMoney();
 
-        //ph.startPrinting(ed);
+        ph.startPrinting(ed);
     }
 }
