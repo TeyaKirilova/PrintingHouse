@@ -2,11 +2,13 @@ package com.company.printinghouse;
 
 import com.company.machines.Machine;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class PrintingHouse {
-    private List<Employee> employees;
-    private List<Machine> machines;
+    private final List<Employee> employees;
+    private final List<Machine> machines;
 
     public PrintingHouse(List<Employee> employees, List<Machine> machines) {
         this.employees = employees;
@@ -14,7 +16,6 @@ public class PrintingHouse {
     }
 
     public void startPrinting(List<Edition> ed){
-        //machine opens new thread for each edition and starts printing
         this.machines
                 .forEach(machine -> new Thread(() ->
                         machine.print(ed))

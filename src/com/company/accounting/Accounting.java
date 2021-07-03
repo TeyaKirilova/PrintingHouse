@@ -16,11 +16,10 @@ public class Accounting {
     }
 
     public int managerCount() {
-        int ctr = 0; // count managers
+        int ctr = 0;
         for (var employee : employees) {
             if (employee.isManager()){
-                ctr++; // we use helper func to find all managers in the list, when we find one, we
-                // increment the counter end return it
+                ctr++;
             }
         }
         return ctr;
@@ -31,16 +30,16 @@ public class Accounting {
         double totalBookExpense = 0;
 
         for (var employee : employees) {
-            double currentSalary = employee.getSalary(); //for each iteration we get the
-            totalSalaryExpenses += currentSalary; // salary and sum it
+            double currentSalary = employee.getSalary();
+            totalSalaryExpenses += currentSalary;
         }
 
         for (var edition : editions) {
             double currentBookPrice = edition.sumTotalExpenses();
-            totalBookExpense += currentBookPrice; // sum total expenses for books in the list
+            totalBookExpense += currentBookPrice;
         }
 
-        double totalExpenses; // expenses for books + salary
+        double totalExpenses;
         totalExpenses = totalBookExpense + totalSalaryExpenses;
 
         return totalExpenses;
@@ -58,9 +57,9 @@ public class Accounting {
     }
 
     public double getRemainingMoney() {
-        double sum = getProfit() - calculateExpenses(); //helper var to get the diff between the income and outcome
+        double sum = getProfit() - calculateExpenses();
 
-        if ( sum > 0) { // if we have diff, greater than 0, we divide it between the managers
+        if ( sum > 0) {
             return sum / managerCount();
         }
 

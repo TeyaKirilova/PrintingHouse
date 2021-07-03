@@ -13,7 +13,7 @@ public class PrintData extends Accounting {
         super(editions, employees);
     }
 
-    public String printData() {
+    public void printData() {
         var managers =
                 String.format("The company has %d managers %n", managerCount());
 
@@ -24,14 +24,12 @@ public class PrintData extends Accounting {
                 String.format("The profit for the company is: %.2f%n", getProfit());
 
         var managerProfit =
-                String.format("Each manager should receive: %.2f%n", getRemainingMoney());
+                String.format("Each manager should receive %.2f above their fixed salary%n", getRemainingMoney());
 
         System.out.println(managers);
         System.out.println(expensePrint);
         System.out.println(profitPrint);
         System.out.println(managerProfit);
-
-        return managers;
     }
 
     public void printToFile() throws IOException {
@@ -44,11 +42,11 @@ public class PrintData extends Accounting {
             writer.write(
                     String.format("The profit for the company is: %.2f%n", getProfit()));
             writer.write(
-                    String.format("Each manager should receive: %.2f%n", getRemainingMoney()));
+                    String.format("Each manager should receive %.2f above their fixed salary%n", getRemainingMoney()));
 
         }
         catch(IOException e){
-            // Handle the exception
+            System.out.println("Something went wrong.");
         }
     }
 }

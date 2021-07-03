@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class Machine {
-    private Color color;
-    private int maxCapacity;
+    private final Color color;
+    private final int maxCapacity;
     private final UUID uuid;
     private final int pagesPerMinute;
 
@@ -24,27 +24,6 @@ public class Machine {
         return color;
     }
 
-    public int getMaxCapacity() {
-        return maxCapacity;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public int getPagesPerMinute() {
-        return pagesPerMinute;
-    }
-
-    @Override
-    public String toString() {
-        return "Machines{" +
-                "color=" + color +
-                ", maxCapacity=" + maxCapacity +
-                ", uuid" + uuid +
-                '}';
-    }
-
     public void print(List<Edition> ed) {
         int production = 0;
         for (var e : ed) {
@@ -52,9 +31,7 @@ public class Machine {
             production += tmp;
         }
         var delay = (long) ((double) 60 / (double) this.pagesPerMinute * 1000);
-        //set printing delay
         for (int i = 0; i < production; i++) {
-            //catch exception if printing is interrupted
             try {
                 Thread.sleep(delay);
                 var str = String.format("Machine %s printed in %s color", this.uuid.toString(), getColor());
@@ -65,4 +42,6 @@ public class Machine {
             }
         }
     }
+
+
 }
