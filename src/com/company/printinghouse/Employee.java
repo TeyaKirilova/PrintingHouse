@@ -19,7 +19,8 @@ public class Employee {
         return salary;
     }
 
-    public boolean isManager() {
+    public boolean isManager() { //bool function to check if the current employee is manager,
+        //it is done in order to help us divide the profit between the managers;
         if (this.employeeType == EmployeeType.MANAGER) {
             return true;
         }

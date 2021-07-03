@@ -26,15 +26,11 @@ public class Edition extends Order {
         return pageSize;
     }
 
-    public PaperType getPaperType() {
-        return paperType;
-    }
-
     public int getPageCount() {
         return pageCount;
     }
 
-    public double getEditionPrice() {
+    public double getEditionPrice() { // calculate material expenses for each book
         double price = this.getPageCount()
                 * this.getPageSize().getFormatValue()
                 * this.getPageSize().getFormatValue();
@@ -43,9 +39,11 @@ public class Edition extends Order {
     }
 
     public double sellingPrice() {
-        return this.getEditionPrice() * 1.7;
-    }
+        return getCount() * (this.getEditionPrice() + (this.getEditionPrice() * 0.7));
+    } //
+    // make book printing profitable
 
+    //sum expenses for all requested editions
     public double sumTotalExpenses() {
         return this.getEditionPrice() * this.getCount();
     }

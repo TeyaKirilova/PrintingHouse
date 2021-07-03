@@ -14,6 +14,7 @@ public class PrintingHouse {
     }
 
     public void startPrinting(Edition ed){
+        //machine opens new thread for each edition and starts printing
         this.machines
                 .forEach(machine -> new Thread(() -> machine.print(ed)).start());
     }

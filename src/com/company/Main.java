@@ -17,10 +17,6 @@ public class Main {
 
     public static void main(String[] args) {
         Edition ed = new Edition(5, "Mathematics", PageSize.A3, PaperType.STANDARD, 300);
-        System.out.printf("Price is : %.2f %n", ed.getEditionPrice());
-        System.out.printf("Selling Price is : %.2f %n", ed.sellingPrice());
-        System.out.printf("Total Price is : %.2f %n", ed.sumTotalExpenses());
-
 
         List<Edition> editions = new ArrayList<>();
         editions.add(new Edition(5, "Fashion",PageSize.A4,PaperType.GLOSSY,268));
@@ -49,8 +45,6 @@ public class Main {
 
         Accounting accounting = new Accounting(editions, employees);
 
-        accounting.CalculateExpenses();
-
         List<Machine> machineList = new ArrayList<>();
 
         machineList.add( new Machine(Color.BLACKANDWHITE, 5000, 600));
@@ -59,6 +53,9 @@ public class Main {
 
         PrintingHouse ph = new PrintingHouse(employees, machineList);
 
-        ph.startPrinting(ed);
+        System.out.println("------------------------");
+        System.out.println(accounting.getProfit());
+
+        //ph.startPrinting(ed);
     }
 }

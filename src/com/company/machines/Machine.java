@@ -27,7 +27,6 @@ public class Machine {
         return maxCapacity;
     }
 
-
     public UUID getUuid() {
         return uuid;
     }
@@ -46,11 +45,13 @@ public class Machine {
     }
 
     public void print(Edition ed) {
-        int production = ed.getCount() * ed.getPageCount();
-        var printingDelay = (long) ((double) 60 / (double) this.pagesPerMinute * 1000);
+        int production = ed.getCount() * ed.getPageCount(); //multiply page count by requested editions count
+        var delay = (long) ((double) 60 / (double) this.pagesPerMinute * 1000);
+        //set printing delay
         for (int i = 0; i < production; i++) {
+            //catch exception if printing is interrupted
             try {
-                Thread.sleep(printingDelay);
+                Thread.sleep(delay);
                 var str = String.format("Machine %s printed %s in %s color", this.uuid.toString(), ed.getTitle(), getColor());
                 System.out.println(str);
             } catch (InterruptedException e) {

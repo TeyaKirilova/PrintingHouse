@@ -12,11 +12,4 @@ public class Order {
     public int getCount() {
         return count;
     }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "count=" + count +
-                '}';
-    }
 }
