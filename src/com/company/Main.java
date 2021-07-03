@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.accounting.Accounting;
 import com.company.enums.Color;
 import com.company.enums.EmployeeType;
 import com.company.enums.PageSize;
@@ -48,8 +47,7 @@ public class Main {
         machineList.add( new Machine(Color.COLORED, 6000, 700));
         machineList.add( new Machine(Color.BLACKANDWHITE, 7000, 800));
 
-        PrintingHouse ph = new PrintingHouse(employees, machineList);
-        Accounting accounting = new Accounting(editions, employees);
+        PrintingHouse ph = new PrintingHouse(machineList);
         PrintData printData = new PrintData(editions, employees);
         printData.printData();
         try {
