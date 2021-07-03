@@ -11,6 +11,7 @@ import com.company.printinghouse.Employee;
 import com.company.printinghouse.PrintingHouse;
 import com.company.utils.PrintData;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,11 @@ public class Main {
         Accounting accounting = new Accounting(editions, employees);
         PrintData printData = new PrintData(editions, employees);
         printData.printData();
+        try {
+            printData.printToFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         ph.startPrinting(editions);
     }

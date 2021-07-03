@@ -12,6 +12,7 @@ public class Accounting {
 
         this.editions = editions;
         this.employees = employees;
+
     }
 
     public int managerCount() {
@@ -60,9 +61,9 @@ public class Accounting {
         double sum = getProfit() - calculateExpenses(); //helper var to get the diff between the income and outcome
 
         if ( sum > 0) { // if we have diff, greater than 0, we divide it between the managers
-            var managerBonusDivide = sum / managerCount();
-            return managerBonusDivide;
+            return sum / managerCount();
         }
+
         return 0;
     }
 }

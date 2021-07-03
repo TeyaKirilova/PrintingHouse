@@ -4,16 +4,16 @@ import com.company.accounting.Accounting;
 import com.company.printinghouse.Edition;
 import com.company.printinghouse.Employee;
 
+import java.io.*;
 import java.util.List;
 
-public class PrintData extends Accounting{
-
+public class PrintData extends Accounting {
 
     public PrintData(List<Edition> editions, List<Employee> employees) {
         super(editions, employees);
     }
 
-    public void printData() {
+    public String printData() {
         var managers =
                 String.format("The company has %d managers %n", managerCount());
 
@@ -31,5 +31,24 @@ public class PrintData extends Accounting{
         System.out.println(profitPrint);
         System.out.println(managerProfit);
 
+        return managers;
+    }
+
+    public void printToFile() throws IOException {
+
+        try(FileWriter writer = new FileWriter("output.txt")) {
+            writer.write(
+                    String.format("The company has %d managers %n", managerCount()));
+            writer.write(
+                    String.format("Total expenses for money and books are: %.2f%n", calculateExpenses()));
+            writer.write(
+                    String.format("The profit for the company is: %.2f%n", getProfit()));
+            writer.write(
+                    String.format("Each manager should receive: %.2f%n", getRemainingMoney()));
+
+        }
+        catch(IOException e){
+            // Handle the exception
+        }
     }
 }
